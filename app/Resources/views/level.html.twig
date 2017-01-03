@@ -1,0 +1,33 @@
+<h3 class="level_header">{{ level_title }}</h3>
+{% block message_container %}
+<div id="puzzle_box">
+	<ul class="message_container">
+		{% for symbol in message_data %}
+		<li class="message_symbol" data-symbol="{{ symbol }}">{{ symbol }}</li>
+		{% endfor %}
+	</ul>
+</div>
+<div id="rule_box">
+	Replace all instances of <span id="rule_replace"></span> with <input type="text" id="rule_replace_with" /> <span id="rule_add_tick">&#x2713;</span>
+</div>
+<div id="solution_box">
+	<br>
+	<h4>Submit Solution</h4>
+	<input type="text"> <span id="solution_tick">&#x2713;</span>
+</div>
+<div id="rule_list">
+	<h4>Applied Rules</h4>
+	<div id="submit_rules">Submit rules as solution (19 characters remaining) <span id="rule_add_tick" style="display: inline;">✓</span></div>
+</div>
+{% for name, alphabet in letter_frequency %}
+<div class="letter_frequency">
+	<h4>Character Frequency - {{ name }}</h4>
+	<ul>
+		{% for character, frequency in alphabet %}
+		<li>{{ character }}</li>
+		<li>{{ frequency }}%</li>
+		{% endfor %}
+	</ul> 
+</div>
+{% endfor %}
+{% endblock message_container %}
